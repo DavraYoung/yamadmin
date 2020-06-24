@@ -12,6 +12,7 @@ export default {
   syncProducts: () => [host, 'products/sync'].join('/'),
   product: (id) => [host, `products/${id}/`].join('/'),
   modifierDetails: (id) => [host, `products/modifiers/${id}/`].join('/'),
+  regions: () => [host, 'api/regions'].join('/'),
   productModifiers: () => [host, 'products/modifiers/'].join('/'),
   categoryDetails: (id) => [host, `products/categories/${id}/`].join('/'),
   productsCategory: () => [host, 'products/categories/'].join('/'),

@@ -105,6 +105,26 @@ export const editModifier = (params, modifierId) => async (dispatch) => {
 };
 
 
+export const getRegionsRequest = createAction('GET_REGIONS_REQUEST');
+export const getRegionsFailure = createAction('GET_REGIONS_FAILURE');
+export const getRegionsSuccess = createAction('GET_REGIONS_SUCCESS');
+
+export const getRegions = () => async (dispatch) => {
+  dispatch(getRegionsRequest());
+  try {
+    const response = await httpClient.get(api.regions());
+    dispatch(getRegionsSuccess({ data: response.data }));
+  } catch (error) {
+    console.error(error);
+    if (error.response.status === 403 || error.response.status === 401) {
+      localStorage.removeItem('token');
+      dispatch(loginFailure());
+    }
+    dispatch(getRegionsFailure());
+  }
+};
+
+
 export const getModifierDetailsRequest = createAction('GET_MODIFIER_DETAILS_REQUEST');
 export const getModifierDetailsFailure = createAction('GET_MODIFIER_DETAILS_FAILURE');
 export const getModifierDetailsSuccess = createAction('GET_MODIFIER_DETAILS_SUCCESS');
