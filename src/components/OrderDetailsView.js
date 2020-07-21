@@ -309,7 +309,7 @@ const OrderDetailsView = (props) => {
           </Descriptions.Item>
           <Descriptions.Item label="Заметки" span={2}>
             {
-              allowEdit
+              order.status === 'new' || order.status === 'pending'
                 ? (
                   form.getFieldDecorator(('notes'), {
                     initialValue: order.notes,
