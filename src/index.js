@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import createStore from './utils';
+import createStore from './store';
 
 const store = createStore(window.STORE_DATA, window);
 

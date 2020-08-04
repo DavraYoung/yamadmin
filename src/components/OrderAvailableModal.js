@@ -15,7 +15,6 @@ const OrderAvailableModal = ({ orderId }) => {
   const [isVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
   const availableProductsList = useSelector((state) => state.orderDetails.availableList);
-  const selectedProducts = useSelector((state) => state.orderDetails[orderId].products);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -85,7 +84,6 @@ const OrderAvailableModal = ({ orderId }) => {
                       dispatch(setOrderStateChanged());
                       dispatch(addOrderProduct({ item, orderId }));
                     }}
-                    disabled={selectedProducts?.some((sp) => sp.id == item.id)}
                     style={{ marginRight: 20 }}
                   >
                     Добавить
